@@ -1,23 +1,28 @@
 import React, { Component } from "react";
-// import { BrowserRouter, Route } from 'react-router-dom';
-// import axios from "axios";
-// import { v4 as uuidv4 } from 'uuid';
 import shoes from "./api/shoes";
 import "./App.css";
-import CardInfo from "./components/CardInfo/CardInfo";
-import Card from "./components/Card/Card";
+import Inputs from "./components/Inputs/Inputs";
+import ShoesList from "./components/ShoesList/ShoesList";
+import Spinner from "./components/Spinner/Spinner";
 
 class App extends Component {
   state = {
     data: [],
+    originalData: [],
+    inputValue: "",
     isError: false,
     isEdit: false,
+    isLoading: false,
   };
 
   getData = async () => {
     try {
       const res = await shoes.get("/shoes");
-      this.setState({ data: res.data });
+      this.setState({
+        data: res.data,
+        originalData: res.data,
+        isLoading: false,
+      });
     } catch (error) {
       this.errMsg(error.message);
     }
@@ -29,23 +34,13 @@ class App extends Component {
   };
 
   componentDidMount() {
+    this.setState({ isLoading: true });
     this.getData();
   }
 
-  displayCards = () => {
-    return this.state.data.map((card) => {
-      return (
-        <Card
-          key={card.id}
-          id={card.id}
-          imgSrc={card.imageUrl}
-          title={card.title}
-          price={card.price}
-          handleUpdate={this.UpdateCard}
-          handleDelete={this.DeleteCard}
-          isEdit={this.state.isEdit}
-        />
-      );
+  handleInputChange = (e) => {
+    this.setState({
+      inputValue: e.target.value,
     });
   };
 
@@ -104,16 +99,20 @@ class App extends Component {
     return (
       <div className="container">
         {this.state.isError && this.errMsg}
-        <main className="card-container">
-          <div className="create-card">
-            <CardInfo
-              handleCreateCard={this.creatNewCard}
-              btnName="Create"
-              title="Create a new card:"
-            />
-          </div>
-          {this.displayCards()}
-        </main>
+        <Inputs
+          handleInputChange={this.handleInputChange}
+          value={this.state.inputValue}
+          labelName="Search shoes by name:"
+        />
+        {this.state.isLoading && <Spinner />}
+        <ShoesList
+          shoes={this.state.data}
+          userValue={this.state.inputValue}
+          handleUpdate={this.UpdateCard}
+          handleDelete={this.DeleteCard}
+          isEdit={this.state.isEdit}
+          handleCreateCard={this.creatNewCard}
+        />
       </div>
     );
   }

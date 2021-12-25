@@ -13,7 +13,7 @@ class CardInfo extends Component {
 
   handleClick = (e) => {
     console.log(e);
-    if (e.target.innerText === "Create") {
+    if (e.target.innerText === "Add") {
       this.props.handleCreateCard(this.state);
     } else {
       const newTitle =
