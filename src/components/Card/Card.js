@@ -18,8 +18,7 @@ class Card extends Component {
           alt={this.props.title}
         ></img>
         <div className="cardInfo">
-          <h1>{this.props.title}</h1>
-          <p>{this.props.description}</p>
+          <h1>{`${this.props.title} - ${this.props.price}$`}</h1>
         </div>
         <div className="cardInfo__btns">
           <button className="cardInfo__btns--btn" onClick={this.handleClick}>
@@ -39,7 +38,7 @@ class Card extends Component {
             btnName="Update"
             title="Update card:"
             currentCardTitle={this.props.title}
-            currentCardDescription={this.props.description}
+            currentCardPrice={this.props.price}
             currentCardImgSrc={this.props.imgSrc}
           />
         )}

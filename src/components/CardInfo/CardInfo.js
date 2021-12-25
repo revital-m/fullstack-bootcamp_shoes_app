@@ -4,7 +4,7 @@ import "./CardInfo.css";
 class CardInfo extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", description: "", imgUrl: "" };
+    this.state = { title: "", price: "", imgUrl: "" };
   }
 
   handleInputChange = (e) => {
@@ -20,23 +20,18 @@ class CardInfo extends Component {
         this.state.title === ""
           ? this.props.currentCardTitle
           : this.state.title;
-      const newDescription =
-        this.state.description === ""
-          ? this.props.currentCardDescription
-          : this.state.description;
+      const newPrice =
+        this.state.price === ""
+          ? this.props.currentCardPrice
+          : this.state.price;
       const newImgUrl =
         this.state.imgUrl === ""
           ? this.props.currentCardImgSrc
           : this.state.imgUrl;
 
-      this.props.handleUpdate(
-        newTitle,
-        newDescription,
-        newImgUrl,
-        this.props.cardID
-      );
+      this.props.handleUpdate(newTitle, newPrice, newImgUrl, this.props.cardID);
     }
-    this.setState({ title: "", description: "", imgUrl: "" });
+    this.setState({ title: "", price: "", imgUrl: "" });
   };
 
   render() {
@@ -64,20 +59,16 @@ class CardInfo extends Component {
           ></input>
         </div>
         <div>
-          <label className="input--label">Description:</label>
+          <label className="input--label">Price:</label>
           <input
             className="input--info"
             onChange={this.handleInputChange}
             type="text"
-            name="description"
-            value={this.state.description}
+            name="price"
+            value={this.state.price}
           ></input>
         </div>
-        <button
-          className="btn"
-          onClick={this.handleClick}
-          btnName={this.props.btnName}
-        >
+        <button className="btn" onClick={this.handleClick}>
           {this.props.btnName}
         </button>
       </div>

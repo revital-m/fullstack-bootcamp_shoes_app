@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import { BrowserRouter, Route } from 'react-router-dom';
 // import axios from "axios";
 // import { v4 as uuidv4 } from 'uuid';
-import images from "./api/images";
+import shoes from "./api/shoes";
 import "./App.css";
 import CardInfo from "./components/CardInfo/CardInfo";
 import Card from "./components/Card/Card";
@@ -16,7 +16,7 @@ class App extends Component {
 
   getData = async () => {
     try {
-      const res = await images.get("/images");
+      const res = await shoes.get("/shoes");
       this.setState({ data: res.data });
     } catch (error) {
       this.errMsg(error.message);
@@ -40,7 +40,7 @@ class App extends Component {
           id={card.id}
           imgSrc={card.imageUrl}
           title={card.title}
-          description={card.description}
+          price={card.price}
           handleUpdate={this.UpdateCard}
           handleDelete={this.DeleteCard}
           isEdit={this.state.isEdit}
@@ -51,9 +51,9 @@ class App extends Component {
 
   creatNewCard = async (data) => {
     try {
-      const res = await images.post("/images", {
+      const res = await shoes.post("/shoes", {
         title: data.title,
-        description: data.description,
+        price: data.price,
         imageUrl: data.imgUrl,
       });
       this.setState((prevState) => {
@@ -64,16 +64,16 @@ class App extends Component {
     }
   };
 
-  UpdateCard = async (newTitle, newDescription, newImgUrl, cardID) => {
+  UpdateCard = async (newTitle, newPrice, newImgUrl, cardID) => {
     try {
-      const res = await images.put(`/images/${cardID}`, {
+      const res = await shoes.put(`/shoes/${cardID}`, {
         title: newTitle,
-        description: newDescription,
+        price: newPrice,
         imageUrl: newImgUrl,
       });
       const editCard = {
         title: res.data.title,
-        description: res.data.description,
+        price: res.data.price,
         imageUrl: res.data.imageUrl,
       };
       this.setState((prevState) => {
@@ -90,9 +90,9 @@ class App extends Component {
 
   DeleteCard = async (cardID) => {
     try {
-      const res = await images.delete(`/images/${cardID}`);
+      const res = await shoes.delete(`/shoes/${cardID}`);
       const filteredData = this.state.data.filter((card) => {
-        return card.id !== cardID;
+        return card.id !== res.data.id;
       });
       this.setState({ data: filteredData });
     } catch (error) {
