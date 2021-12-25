@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 1rem;
+  margin: 3rem;
+}
+
+.create-card {
+  width: 50vmin;
+  overflow: hidden;
+  margin: 1rem;
+  box-shadow: 5px 5px 20px gray;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(196, 196, 196, 0.555);
+}

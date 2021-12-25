@@ -1,0 +1,45 @@
+.double,
+.winner {
+  position: absolute;
+  padding: 5rem;
+  border-radius: 7rem;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.double {
+  top: 5rem;
+  left: 8rem;
+  width: 59vw;
+  height: 51vh;
+  background: rgb(145, 92, 150);
+  box-shadow: 5px 5px 20px rgb(67, 0, 87);
+}
+
+.message__info,
+.message--icon {
+  font-size: 6rem;
+}
+
+.message--icon {
+  padding-left: 1.5rem;
+}
+
+.winner {
+  top: 0.5rem;
+  left: 1.3rem;
+  width: 70vw;
+  height: 77vh;
+  background: url("./img/dice-winner.jpg") no-repeat center center/cover;
+  box-shadow: 5px 5px 20px goldenrod;
+  color: #e4ba4f;
+}
+
+.winner > h1 {
+  background: rgba(0, 0, 0, 0.733);
+  box-shadow: 5px 5px 20px rgb(37, 37, 37);
+  border-radius: 7rem;
+  padding: 3rem;
+  width: max-content;
+  margin: 0 auto;
+}

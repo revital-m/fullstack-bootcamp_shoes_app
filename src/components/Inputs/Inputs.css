@@ -1,0 +1,43 @@
+.Input {
+  display: flex;
+  /* justify-content: flex-start; */
+  align-items: center;
+}
+
+.input--label,
+.input--info {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.input--info {
+  /* border: 0.3rem solid transparent; */
+  border: 0.3rem solid #22072a;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 1rem;
+}
+/* 
+.input--info:hover {
+  border: 0.3rem solid #22072a;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 1rem;
+} */
+
+.btn {
+  cursor: pointer;
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: #5cffc9e7;
+  border: 0.2rem solid #318858;
+  border-radius: 1rem;
+  color: black;
+}
+
+.btn:hover {
+  background: #5cffc983;
+}
