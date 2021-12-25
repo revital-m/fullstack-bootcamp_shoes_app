@@ -26,7 +26,6 @@ class ShoesList extends React.Component {
 
   displayCards = () => {
     return this.state.shoes.map((e, idx) => {
-      console.log(e);
       return (
         <Card
           key={idx}
