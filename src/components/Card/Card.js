@@ -3,13 +3,18 @@ import CardInfo from "../CardInfo/CardInfo";
 import "./Card.css";
 
 class Card extends Component {
-  state = { isEdit: this.props.isEdit };
+  state = { isEdit: false };
 
   handleClick = () => {
     this.setState({ isEdit: true });
   };
 
+  closeUpdate = () => {
+    this.setState({ isEdit: false });
+  }
+
   render() {
+    console.log(this.state.isEdit);
     return (
       <div className="card">
         <img
@@ -31,7 +36,7 @@ class Card extends Component {
             Delete
           </button>
         </div>
-        {this.state.isEdit && (
+        {this.state.isEdit && 
           <CardInfo
             handleUpdate={this.props.handleUpdate}
             cardID={this.props.id}
@@ -40,8 +45,9 @@ class Card extends Component {
             currentCardTitle={this.props.title}
             currentCardPrice={this.props.price}
             currentCardImgSrc={this.props.imgSrc}
+            closeUpdate={this.closeUpdate}
           />
-        )}
+        }
       </div>
     );
   }

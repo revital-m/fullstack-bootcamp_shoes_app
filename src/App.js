@@ -11,7 +11,7 @@ class App extends Component {
     originalData: [],
     inputValue: "",
     isError: false,
-    isEdit: false,
+    // isEdit: false,
     isLoading: false,
   };
 
@@ -96,6 +96,7 @@ class App extends Component {
   };
 
   render() {
+    // console.log(this.state.isEdit);
     return (
       <div className="container">
         {this.state.isError && this.errMsg}
@@ -110,7 +111,7 @@ class App extends Component {
           userValue={this.state.inputValue}
           handleUpdate={this.UpdateCard}
           handleDelete={this.DeleteCard}
-          isEdit={this.state.isEdit}
+          // isEdit={this.state.isEdit}
           handleCreateCard={this.creatNewCard}
         />
       </div>

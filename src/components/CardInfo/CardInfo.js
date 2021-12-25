@@ -29,6 +29,7 @@ class CardInfo extends Component {
           : this.state.imgUrl;
 
       this.props.handleUpdate(newTitle, newPrice, newImgUrl, this.props.cardID);
+      this.props.closeUpdate();
     }
     this.setState({ title: "", price: "", imgUrl: "" });
   };
