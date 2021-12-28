@@ -25,7 +25,6 @@ class ShoesList extends React.Component {
   };
 
   displayCards = () => {
-    // console.log(this.state.isEdit);
     return this.state.shoes.map((e, idx) => {
       return (
         <Card
@@ -36,7 +35,6 @@ class ShoesList extends React.Component {
           price={e.price}
           handleUpdate={this.props.handleUpdate}
           handleDelete={this.props.handleDelete}
-          // WasEdit={this.state.isEdit}
         />
       );
     });

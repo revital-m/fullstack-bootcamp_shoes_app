@@ -11,7 +11,7 @@ class Card extends Component {
 
   closeUpdate = () => {
     this.setState({ isEdit: false });
-  }
+  };
 
   render() {
     console.log(this.state.isEdit);
@@ -36,7 +36,7 @@ class Card extends Component {
             Delete
           </button>
         </div>
-        {this.state.isEdit && 
+        {this.state.isEdit && (
           <CardInfo
             handleUpdate={this.props.handleUpdate}
             cardID={this.props.id}
@@ -47,7 +47,7 @@ class Card extends Component {
             currentCardImgSrc={this.props.imgSrc}
             closeUpdate={this.closeUpdate}
           />
-        }
+        )}
       </div>
     );
   }

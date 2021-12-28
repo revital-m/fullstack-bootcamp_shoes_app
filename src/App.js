@@ -11,7 +11,6 @@ class App extends Component {
     originalData: [],
     inputValue: "",
     isError: false,
-    // isEdit: false,
     isLoading: false,
   };
 
@@ -59,7 +58,7 @@ class App extends Component {
     }
   };
 
-  UpdateCard = async (newTitle, newPrice, newImgUrl, cardID) => {
+  UpdateCard = async (newTitle, newPrice, newImgUrl, cardID, callback) => {
     try {
       const res = await shoes.put(`/shoes/${cardID}`, {
         title: newTitle,
@@ -70,6 +69,7 @@ class App extends Component {
         title: res.data.title,
         price: res.data.price,
         imageUrl: res.data.imageUrl,
+        id: res.data.id,
       };
       this.setState((prevState) => {
         return {
@@ -78,6 +78,7 @@ class App extends Component {
           }),
         };
       });
+      callback();
     } catch (error) {
       this.errMsg(error.message);
     }
@@ -96,7 +97,6 @@ class App extends Component {
   };
 
   render() {
-    // console.log(this.state.isEdit);
     return (
       <div className="container">
         {this.state.isError && this.errMsg}
@@ -111,7 +111,6 @@ class App extends Component {
           userValue={this.state.inputValue}
           handleUpdate={this.UpdateCard}
           handleDelete={this.DeleteCard}
-          // isEdit={this.state.isEdit}
           handleCreateCard={this.creatNewCard}
         />
       </div>
